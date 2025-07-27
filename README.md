@@ -24,7 +24,7 @@ The following flowchart provides a detailed, step-by-step visualization of our p
 
 ## 3. Repository Structure
 
-This repository is organized into the following directories:
+This repository is organized into the following directories: # 1234
 
 * **/data/**: Contains the final, cleaned feature matrices and other small data files.
 * **/notebooks/**: Includes all Jupyter Notebooks used for data exploration, analysis, and model prototyping. The script for the preliminary MIMIC-IV analysis can be found here.
