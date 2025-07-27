@@ -20,7 +20,7 @@ The entire framework is developed and validated on the comprehensive, real-world
 
 The following flowchart provides a detailed, step-by-step visualization of our proposed architecture, highlighting the core components and our specific innovations.
 
-![Architectural Flowchart](.Flow_chart_em.png)
+![Architectural Flowchart](Flow_chart_em.png)
 
 ## 3. Repository Structure
 
