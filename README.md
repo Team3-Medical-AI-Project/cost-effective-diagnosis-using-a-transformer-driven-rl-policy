@@ -51,7 +51,7 @@ This repository is organized into the following directories:
 2.  **Set up a virtual environment (recommended):**
     ```bash
     python -m venv venv
-    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+    source venv\Scripts\activate  # On Mac, use `venv/bin/activate`
     ```
 
 3.  **Install the required libraries:**
