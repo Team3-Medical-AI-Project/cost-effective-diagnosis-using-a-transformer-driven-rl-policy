@@ -205,3 +205,22 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# artifacts
+logs/
+logs_aki/
+reports/*.png
+reports/*.pdf
+
+# python cache
+__pycache__/
+*.pyc
+
+# envs
+.venv/
+.env/
+.conda/
+
+# optional: ignore patched copies if you prefer
+models/*patched*.zip
+
