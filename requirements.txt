@@ -1,13 +1,16 @@
-# Core libraries for data handling and machine learning
-pandas==2.2.0
+# Environment for Cost-Effective RL Diagnosis Project
+# To install: pip install -r requirements.txt
+
+pandas==2.1.4
 numpy==1.26.4
-scikit-learn==1.4.1
-
-# Deep Learning Framework (PyTorch)
-# Note: The specific version might change depending on CUDA compatibility for GPU use.
-torch==2.3.0
-
-# Visualization libraries
-matplotlib==3.8.3
-seaborn==0.13.2
-
+torch==2.1.2
+gymnasium==0.29.1
+stable-baselines3==2.2.1
+sb3-contrib==2.2.1
+scikit-learn==1.3.2
+joblib==1.3.2
+matplotlib==3.8.2
+seaborn==0.13.1
+sdv==1.8.0
+xgboost==2.0.3
+pyyaml==6.0.1
