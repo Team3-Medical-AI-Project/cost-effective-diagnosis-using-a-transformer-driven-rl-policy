@@ -1,0 +1,30 @@
+{
+  "timestamp": "2025-08-19 21:56:09",
+  "num_features": 37,
+  "num_test_groups": 4,
+  "action_dim": 5,
+  "diagnose_action_index": 4,
+  "min_tests_before_diagnosis": 2,
+  "test_groups": [
+    {
+      "index": 0,
+      "name": "CBC",
+      "cost_usd": null
+    },
+    {
+      "index": 1,
+      "name": "CMP",
+      "cost_usd": null
+    },
+    {
+      "index": 2,
+      "name": "ABG",
+      "cost_usd": null
+    },
+    {
+      "index": 3,
+      "name": "aPTT",
+      "cost_usd": null
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+    "model_type": "xgboost",
+    "metrics": {
+        "accuracy": 0.8234126984126984,
+        "auroc": 0.799614332090948,
+        "auprc": 0.5406457961041002
+    },
+    "cost": {
+        "average_usd_cost": 656.59,
+        "average_num_tests": 4
+    }
+}

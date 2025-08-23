@@ -1,0 +1,143 @@
+--------------------------------------------------
+--- Case Study for Episode: 0 ---
+True Patient Outcome: Discharged
+Step 1: Ordered panel 0 (approx cost $30.86)
+Step 2: Ordered panel 3 (approx cost $49.00)
+Step 3: Ordered panel 1 (approx cost $67.73)
+Step 4: Diagnose action 5
+Final Prediction: Discharged (p_expired~34.95%)
+Total Cost Incurred: $147.59
+Result: CORRECT
+--------------------------------------------------
+
+--------------------------------------------------
+--- Case Study for Episode: 1 ---
+True Patient Outcome: Discharged
+Step 1: Ordered panel 0 (approx cost $30.86)
+Step 2: Ordered panel 3 (approx cost $49.00)
+Step 3: Ordered panel 1 (approx cost $67.73)
+Step 4: Diagnose action 5
+Final Prediction: Expired (p_expired~51.83%)
+Total Cost Incurred: $147.59
+Result: INCORRECT
+--------------------------------------------------
+
+--------------------------------------------------
+--- Case Study for Episode: 2 ---
+True Patient Outcome: Discharged
+Step 1: Ordered panel 0 (approx cost $30.86)
+Step 2: Ordered panel 3 (approx cost $49.00)
+Step 3: Ordered panel 1 (approx cost $67.73)
+Step 4: Diagnose action 5
+Final Prediction: Expired (p_expired~55.13%)
+Total Cost Incurred: $147.59
+Result: INCORRECT
+--------------------------------------------------
+
+--------------------------------------------------
+--- Case Study for Episode: 3 ---
+True Patient Outcome: Expired
+Step 1: Ordered panel 0 (approx cost $30.86)
+Step 2: Ordered panel 3 (approx cost $49.00)
+Step 3: Ordered panel 1 (approx cost $67.73)
+Step 4: Diagnose action 5
+Final Prediction: Expired (p_expired~46.08%)
+Total Cost Incurred: $147.59
+Result: CORRECT
+--------------------------------------------------
+
+--------------------------------------------------
+--- Case Study for Episode: 4 ---
+True Patient Outcome: Discharged
+Step 1: Ordered panel 0 (approx cost $30.86)
+Step 2: Ordered panel 3 (approx cost $49.00)
+Step 3: Ordered panel 1 (approx cost $67.73)
+Step 4: Diagnose action 5
+Final Prediction: Discharged (p_expired~36.17%)
+Total Cost Incurred: $147.59
+Result: CORRECT
+--------------------------------------------------
+
+--------------------------------------------------
+--- Case Study for Episode: 5 ---
+True Patient Outcome: Discharged
+Step 1: Ordered panel 0 (approx cost $30.86)
+Step 2: Ordered panel 3 (approx cost $49.00)
+Step 3: Ordered panel 1 (approx cost $67.73)
+Step 4: Diagnose action 5
+Final Prediction: Expired (p_expired~49.16%)
+Total Cost Incurred: $147.59
+Result: INCORRECT
+--------------------------------------------------
+
+--------------------------------------------------
+--- Case Study for Episode: 6 ---
+True Patient Outcome: Discharged
+Step 1: Ordered panel 0 (approx cost $30.86)
+Step 2: Ordered panel 3 (approx cost $49.00)
+Step 3: Ordered panel 1 (approx cost $67.73)
+Step 4: Diagnose action 5
+Final Prediction: Expired (p_expired~50.97%)
+Total Cost Incurred: $147.59
+Result: INCORRECT
+--------------------------------------------------
+
+--------------------------------------------------
+--- Case Study for Episode: 7 ---
+True Patient Outcome: Discharged
+Step 1: Ordered panel 0 (approx cost $30.86)
+Step 2: Ordered panel 3 (approx cost $49.00)
+Step 3: Ordered panel 1 (approx cost $67.73)
+Step 4: Diagnose action 5
+Final Prediction: Discharged (p_expired~33.31%)
+Total Cost Incurred: $147.59
+Result: CORRECT
+--------------------------------------------------
+
+--------------------------------------------------
+--- Case Study for Episode: 8 ---
+True Patient Outcome: Discharged
+Step 1: Ordered panel 0 (approx cost $30.86)
+Step 2: Ordered panel 3 (approx cost $49.00)
+Step 3: Ordered panel 1 (approx cost $67.73)
+Step 4: Diagnose action 5
+Final Prediction: Expired (p_expired~52.55%)
+Total Cost Incurred: $147.59
+Result: INCORRECT
+--------------------------------------------------
+
+--------------------------------------------------
+--- Case Study for Episode: 9 ---
+True Patient Outcome: Discharged
+Step 1: Ordered panel 0 (approx cost $30.86)
+Step 2: Ordered panel 3 (approx cost $49.00)
+Step 3: Ordered panel 1 (approx cost $67.73)
+Step 4: Diagnose action 5
+Final Prediction: Expired (p_expired~57.19%)
+Total Cost Incurred: $147.59
+Result: INCORRECT
+--------------------------------------------------
+
+--------------------------------------------------
+--- Case Study for Episode: 10 ---
+True Patient Outcome: Discharged
+Step 1: Ordered panel 0 (approx cost $30.86)
+Step 2: Ordered panel 3 (approx cost $49.00)
+Step 3: Ordered panel 1 (approx cost $67.73)
+Step 4: Diagnose action 5
+Final Prediction: Expired (p_expired~41.12%)
+Total Cost Incurred: $147.59
+Result: INCORRECT
+--------------------------------------------------
+
+--------------------------------------------------
+--- Case Study for Episode: 11 ---
+True Patient Outcome: Discharged
+Step 1: Ordered panel 0 (approx cost $30.86)
+Step 2: Ordered panel 3 (approx cost $49.00)
+Step 3: Ordered panel 1 (approx cost $67.73)
+Step 4: Diagnose action 5
+Final Prediction: Discharged (p_expired~37.19%)
+Total Cost Incurred: $147.59
+Result: CORRECT
+--------------------------------------------------
