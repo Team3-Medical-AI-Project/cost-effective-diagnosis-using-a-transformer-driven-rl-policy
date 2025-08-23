@@ -1,0 +1,71 @@
+# =================================================
+# Real-Cost config for Sepsis RL Agent (no discounts/subsidies)
+# =================================================
+
+# --- File Paths ---
+processed_data_dir: "data/processed/sepsis"
+model_dir: "models"
+log_dir: "logs_sepsis_final"
+gain_generator_path: "models/generator_sepsis.pth"
+prelim_classifier_path: "models/classifier_sepsis.pth"
+
+# --- Data/Env ---
+num_features: 37
+num_test_groups: 4
+min_tests_before_diagnosis: 3
+diagnose_mode: "split"         # DIAG_POS / DIAG_NEG actions
+decision_threshold: 0.55      # ignored in split mode
+jit: false
+pred_threshold: 0.55
+
+# Panel groupings
+feature_groups:
+  0: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]           # CBC
+  1: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19] # CMP
+  2: [20, 21, 22, 23, 24, 25]                  # ABG
+  3: [26, 27, 28, 29, 30, 31, 32, 33, 34, 35]  # aPTT
+visible_feature_indices: [36]
+
+panel_names:
+  "0": "CBC"
+  "1": "CMP"
+  "2": "ABG"
+  "3": "aPTT"
+
+# --- Costs (REAL, no freebies) ---
+cost_mapping:
+  "0": 30.86
+  "1": 67.73
+  "2": 509.0
+  "3": 49.0
+
+# STRICTLY no discounts/subsidies
+first_k_cost_discount: {k: 0, factor: 1.0}
+info_cost_tradeoff: 0.0
+
+# --- Shaping (information/evidence, NOT cost) ---
+uncertainty_factor: 1.5
+progress_toward_true_factor: 0.8
+
+# --- Balanced terminal rewards (keep costs influential) ---
+reward_true_positive: 3000.0
+reward_true_negative: 2000.0
+penalty_false_positive: -8000.0
+penalty_false_negative: -6000.0
+
+# --- PPO / Runtime ---
+total_timesteps: 300000
+seed: 42
+device: "cuda"        # change to "cpu" if needed
+features_dim: 64
+
+n_envs: 16
+n_steps: 2048
+batch_size: 32768
+learning_rate: 1.0e-4
+clip_range: 0.2
+gamma: 0.995
+gae_lambda: 0.95
+ent_coef: 0.005
+vf_coef: 0.5
+max_grad_norm: 0.2
