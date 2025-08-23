@@ -1,142 +1,137 @@
 """
-GAIN Training Script for AKI Cohort
+GAIN (Generative Adversarial Imputation Network) Training for AKI Cohort (v2.1)
 
-Description:
-This script pre-trains the GAIN imputer on the complete rows of the 
-preprocessed AKI dataset. It imports the model architecture from 
-src/models/gain.py.
+v2.1: Adds professional TensorBoard logging to track training performance.
 """
-
+# --- 1. Imports ---
+import pandas as pd
+import numpy as np
 import torch
 import torch.nn as nn
-import numpy as np
-import pandas as pd
-import joblib
+import torch.optim as optim
 from torch.utils.data import DataLoader, TensorDataset
-from pathlib import Path
+from torch.utils.tensorboard import SummaryWriter
+import os
+import sys
 
-# Import the GAIN model blueprints
+# --- Path Setup ---
+try:
+    sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
+except NameError:
+    sys.path.append(os.path.abspath('..'))
+
 from src.models.gain import Generator, Discriminator
+from sklearn.preprocessing import MinMaxScaler
 
-# --- Configuration for AKI ---
-# Define the project root to make file paths more robust
-PROJECT_ROOT = Path(__file__).resolve().parents[2] 
+# --- 2. Configuration ---
+class Config:
+    PROCESSED_DATA_DIR = "data/processed/aki"
+    MODEL_DIR = "models"
+    LOG_DIR = "logs_gain_aki" # Directory to save TensorBoard logs
+    TRAIN_X_FILE = os.path.join(PROCESSED_DATA_DIR, "train_X.csv")
+    GENERATOR_SAVE_PATH = os.path.join(MODEL_DIR, "generator_aki.pth")
+    
+    BATCH_SIZE = 128
+    EPOCHS = 100
+    HINT_RATE = 0.9
+    ALPHA = 10.0
+    LEARNING_RATE = 0.001
 
-CONFIG = {
-    "INPUT_FILE": PROJECT_ROOT / "data" / "preprocessed" / "aki_feature_matrix.csv",
-    "SCALER_FILE": PROJECT_ROOT / "data" / "processed" / "aki" / "scaler_aki.joblib",
-    "OUTPUT_MODEL_FILE": PROJECT_ROOT / "models" / "generator_aki.pth",
-    "ID_COLUMNS": ['subject_id', 'hadm_id', 'stay_id'],
-    "TARGET_COLUMN": "kdigo_aki",
-    "MISSING_RATE": 0.2, # Percentage of values to artificially mask
-    "HINT_RATE": 0.9,    # Percentage of known values to reveal to the discriminator
-    "ALPHA": 10.0,       # Hyperparameter for the reconstruction loss
-    "BATCH_SIZE": 128,
-    "EPOCHS": 100
-}
+# --- 3. Helper Functions ---
+def binary_sampler(p, rows, cols):
+    return np.random.binomial(1, p, (rows, cols))
 
-class GAIN:
-    """
-    The main GAIN class that encapsulates the Generator, Discriminator,
-    and the training loop.
-    """
-    def __init__(self, input_dim, alpha=10.0):
-        self.input_dim = input_dim
-        self.alpha = alpha
-
-        # Initialize models from the imported blueprints
-        self.generator = Generator(input_dim)
-        self.discriminator = Discriminator(input_dim)
+# --- 4. Main Training Function ---
+def train_gain_aki(config):
+    print("--- Starting GAIN Training for AKI Cohort (with Logging) ---")
+    
+    os.makedirs(config.MODEL_DIR, exist_ok=True)
+    os.makedirs(config.LOG_DIR, exist_ok=True)
+    
+    # --- NEW: Initialize TensorBoard Writer ---
+    writer = SummaryWriter(log_dir=config.LOG_DIR)
+    
+    try:
+        X_train = pd.read_csv(config.TRAIN_X_FILE)
+    except FileNotFoundError:
+        print(f"Error: Training data not found at {config.TRAIN_X_FILE}")
+        return
         
-        self.optimizer_G = torch.optim.Adam(self.generator.parameters(), lr=0.0001)
-        self.optimizer_D = torch.optim.Adam(self.discriminator.parameters(), lr=0.0001)
+    num_features = X_train.shape[1]
+    print(f"Using {num_features} features; total rows: {len(X_train)}")
 
-        self.d_loss_fn = nn.BCELoss()
-        self.g_loss_fn = nn.BCELoss()
-        self.mse_loss_fn = nn.MSELoss()
+    scaler = MinMaxScaler()
+    X_train_scaled = scaler.fit_transform(X_train)
+    
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    data_tensor = torch.tensor(X_train_scaled, dtype=torch.float32).to(device)
+    dataloader = DataLoader(TensorDataset(data_tensor), batch_size=config.BATCH_SIZE, shuffle=True)
+    
+    generator = Generator(input_dim=num_features).to(device)
+    discriminator = Discriminator(input_dim=num_features).to(device)
+    
+    optimizer_G = optim.Adam(generator.parameters(), lr=config.LEARNING_RATE)
+    optimizer_D = optim.Adam(discriminator.parameters(), lr=config.LEARNING_RATE)
+    
+    D_loss_fn = nn.BCELoss()
+    G_loss_fn_adv = nn.BCELoss()
+    G_loss_fn_mse = nn.MSELoss()
+    
+    print(f"Starting GAIN training for {config.EPOCHS} epochs on device: {device}")
+    
+    # --- Training Loop ---
+    for epoch in range(config.EPOCHS):
+        total_D_loss, total_G_loss_adv, total_G_loss_mse = 0, 0, 0
+        
+        for batch in dataloader:
+            x_batch = batch[0]
+            batch_size = x_batch.shape[0]
+            
+            # Train Discriminator
+            optimizer_D.zero_grad()
+            m_tensor = torch.tensor(binary_sampler(0.5, batch_size, num_features), dtype=torch.float32).to(device)
+            z_tensor = torch.tensor(np.random.uniform(0, 0.01, size=(batch_size, num_features)), dtype=torch.float32).to(device)
+            x_tilde = x_batch * m_tensor + (1 - m_tensor) * z_tensor
+            g_sample = generator(x_tilde, m_tensor)
+            x_hat = x_batch * m_tensor + (1 - m_tensor) * g_sample
+            h_tensor = torch.tensor(binary_sampler(config.HINT_RATE, batch_size, num_features), dtype=torch.float32).to(device)
+            d_prob = discriminator(x_hat, h_tensor)
+            D_loss = D_loss_fn(d_prob, m_tensor)
+            D_loss.backward()
+            optimizer_D.step()
+            
+            # Train Generator
+            optimizer_G.zero_grad()
+            g_sample = generator(x_tilde, m_tensor)
+            x_hat = x_batch * m_tensor + (1 - m_tensor) * g_sample
+            d_prob = discriminator(x_hat, h_tensor)
+            G_loss_adv = G_loss_fn_adv(d_prob, 1 - m_tensor)
+            G_loss_mse = G_loss_fn_mse(x_hat * (1 - m_tensor), x_batch * (1 - m_tensor))
+            G_loss = G_loss_adv + config.ALPHA * G_loss_mse
+            G_loss.backward()
+            optimizer_G.step()
+            
+            total_D_loss += D_loss.item()
+            total_G_loss_adv += G_loss_adv.item()
+            total_G_loss_mse += G_loss_mse.item()
 
-    def train(self, data_loader, epochs=100):
-        """
-        The main training loop for the GAIN model.
-        """
-        print("Starting GAIN training for AKI cohort...")
-        for epoch in range(epochs):
-            d_loss_total, g_loss_total, mse_loss_total = 0, 0, 0
-            for batch in data_loader:
-                x_batch = batch[0]
-                
-                # --- Train Discriminator ---
-                self.optimizer_D.zero_grad()
-                
-                mask = np.random.binomial(1, 1 - CONFIG["MISSING_RATE"], size=x_batch.shape)
-                mask = torch.from_numpy(mask).float()
-                
-                noise = torch.rand(x_batch.shape)
-                corrupted_x = x_batch * mask + noise * (1 - mask)
-                
-                with torch.no_grad():
-                    imputed_data = self.generator(corrupted_x, mask)
-                
-                hint_mask = np.random.binomial(1, CONFIG["HINT_RATE"], size=x_batch.shape)
-                hint_mask = torch.from_numpy(hint_mask).float()
-                hint = mask * hint_mask
-                
-                d_input = imputed_data * (1 - mask) + x_batch * mask
-                d_prob = self.discriminator(d_input, hint)
-                
-                d_loss = self.d_loss_fn(d_prob, mask)
-                d_loss.backward()
-                self.optimizer_D.step()
+        # --- NEW: Log metrics to TensorBoard at the end of each epoch ---
+        avg_D_loss = total_D_loss / len(dataloader)
+        avg_G_adv = total_G_loss_adv / len(dataloader)
+        avg_G_mse = total_G_loss_mse / len(dataloader)
+        
+        writer.add_scalar('Loss/Discriminator', avg_D_loss, epoch)
+        writer.add_scalar('Loss/Generator_Adversarial', avg_G_adv, epoch)
+        writer.add_scalar('Loss/Generator_MSE', avg_G_mse, epoch)
+        
+        print(f"Epoch {epoch+1}/{config.EPOCHS} | D: {avg_D_loss:.4f} | G_adv: {avg_G_adv:.4f} | G_mse: {avg_G_mse:.4f}")
 
-                # --- Train Generator ---
-                self.optimizer_G.zero_grad()
-                
-                imputed_data_g = self.generator(corrupted_x, mask)
-                d_input_g = imputed_data_g * (1 - mask) + x_batch * mask
-                d_prob_g = self.discriminator(d_input_g, hint)
-                
-                g_adversarial_loss = self.g_loss_fn(d_prob_g, mask)
-                mse_reconstruction_loss = self.mse_loss_fn(imputed_data_g * mask, x_batch * mask)
-                
-                g_loss = g_adversarial_loss + self.alpha * mse_reconstruction_loss
-                g_loss.backward()
-                self.optimizer_G.step()
-                
-                d_loss_total += d_loss.item()
-                g_loss_total += g_adversarial_loss.item()
-                mse_loss_total += mse_reconstruction_loss.item()
-
-            print(f"Epoch {epoch+1}/{epochs} | D Loss: {d_loss_total/len(data_loader):.4f} | G Loss: {g_loss_total/len(data_loader):.4f} | MSE Loss: {mse_loss_total/len(data_loader):.4f}")
-        print("GAIN training finished.")
+    # --- Close the writer and save the model ---
+    writer.close()
+    torch.save(generator.state_dict(), config.GENERATOR_SAVE_PATH)
+    print("\n--- GAIN Training Finished ---")
+    print(f"✅ Saved AKI generator to {config.GENERATOR_SAVE_PATH}")
+    print(f"📈 To view logs, run: tensorboard --logdir={config.LOG_DIR}")
 
 if __name__ == '__main__':
-    print("--- Initializing GAIN Training Pipeline for AKI ---")
-    
-    try:
-        full_df = pd.read_csv(CONFIG["INPUT_FILE"])
-    except FileNotFoundError:
-        print(f"Error: Could not find '{CONFIG['INPUT_FILE']}'. Please run AKI preprocessing first.")
-        exit()
-
-    feature_cols = [col for col in full_df.columns if col not in CONFIG["ID_COLUMNS"] + [CONFIG["TARGET_COLUMN"]]]
-    complete_df = full_df[feature_cols].dropna()
-    print(f"Found {len(complete_df)} complete rows to train GAIN on.")
-
-    try:
-        scaler = joblib.load(CONFIG["SCALER_FILE"])
-        scaled_data = scaler.transform(complete_df)
-    except FileNotFoundError:
-        print(f"Error: Could not find scaler at '{CONFIG['SCALER_FILE']}'. Please run Phase 2 for AKI first.")
-        exit()
-
-    dataset = TensorDataset(torch.from_numpy(scaled_data).float())
-    data_loader = DataLoader(dataset, batch_size=CONFIG["BATCH_SIZE"], shuffle=True)
-    
-    input_dim = len(feature_cols)
-    gain_model = GAIN(input_dim=input_dim, alpha=CONFIG["ALPHA"])
-    gain_model.train(data_loader, epochs=CONFIG["EPOCHS"])
-    
-    output_path = Path(CONFIG["OUTPUT_MODEL_FILE"])
-    output_path.parent.mkdir(exist_ok=True, parents=True)
-    torch.save(gain_model.generator.state_dict(), output_path)
-    print(f"\n--- Trained AKI Generator saved to '{output_path}' ---")
+    train_gain_aki(Config())
