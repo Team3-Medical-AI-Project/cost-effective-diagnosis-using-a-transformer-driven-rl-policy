@@ -1,0 +1,59 @@
+{
+  "cohort": "sepsis",
+  "hours_window": 24,
+  "rows": 17150,
+  "n_subjects": 12158,
+  "n_admissions": 14111,
+  "n_stays": 17150,
+  "n_features": 46,
+  "vital_itemids": {
+    "heart_rate": [
+      220045
+    ],
+    "sbp": [
+      220179
+    ],
+    "dbp": [
+      220180
+    ],
+    "respiratory_rate": [
+      220210
+    ],
+    "temperature_c": [
+      223761
+    ],
+    "temperature_f": [
+      223762
+    ],
+    "spo2": [
+      220277
+    ]
+  },
+  "lab_itemids": {
+    "cbc_hematocrit": 51221,
+    "cbc_hemoglobin": 51222,
+    "cbc_platelet": 51265,
+    "cbc_rbc": 51279,
+    "cbc_wbc": 51301,
+    "cmp_bicarbonate": 50882,
+    "cmp_creatinine": 50912,
+    "cmp_glucose": 50931,
+    "cmp_potassium": 50971,
+    "cmp_bun": 51006,
+    "cmp_aniongap": 50868,
+    "cmp_lactate": 50813,
+    "abg_ph": 50820,
+    "abg_o2_saturation": 50817,
+    "abg_base_excess": 50802,
+    "aptt_ptt": 51275,
+    "aptt_inr": 51237
+  },
+  "labs_minmax_for": [
+    "cmp_lactate",
+    "cmp_creatinine"
+  ],
+  "source_root": "D:\\mimic-iv-3.1\\mimic-iv-3.1",
+  "hosp_path": "D:\\mimic-iv-3.1\\mimic-iv-3.1\\hosp",
+  "icu_path": "D:\\mimic-iv-3.1\\mimic-iv-3.1\\icu",
+  "out_csv": "data\\preprocessed\\sepsis_feature_matrix.csv"
+}

@@ -1,0 +1,291 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Sepsis RL — Single-Acc Threshold Runs</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<style>
+ body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height:1.4; padding:20px; color:#222; }
+ h1 { margin-bottom:0; }
+ .sub { color:#666; margin-top:4px; }
+ table { border-collapse: collapse; }
+ th, td { padding:6px 10px; }
+ figure { margin:0; }
+ code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+</style>
+</head>
+<body>
+  <h1>Sepsis RL — Single-Acc Threshold Runs</h1>
+  <div class="sub">Generated: 2025-08-29 18:31</div>
+
+  <h2>Overview (All Experiments)</h2>
+  <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>name</th>
+      <th>acc</th>
+      <th>precision</th>
+      <th>recall</th>
+      <th>specificity</th>
+      <th>f1</th>
+      <th>f2</th>
+      <th>AUC</th>
+      <th>AUPRC</th>
+      <th>avg_cost</th>
+      <th>avg_steps</th>
+      <th>n_episodes</th>
+      <th>threshold_used</th>
+      <th>threshold_source</th>
+      <th>tn</th>
+      <th>fp</th>
+      <th>fn</th>
+      <th>tp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>reports\single_acc_thr30</td>
+      <td>0.825</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.515</td>
+      <td>0.217</td>
+      <td>148.558</td>
+      <td>4.015</td>
+      <td>400</td>
+      <td>0.3</td>
+      <td>threshold_f2</td>
+      <td>330</td>
+      <td>0</td>
+      <td>70</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+
+  <h2>Global Cost & Panel Usage</h2>
+  <figure><img src='figs/avg_cost_by_experiment.png' width='700'><figcaption>Average cost by experiment</figcaption></figure><figure><img src='figs/aggregate_panel_usage_bar.png' width='640'><figcaption>Global panel usage (orders, summed across runs)</figcaption></figure><figure><img src='figs/aggregate_panel_usage_stacked.png' width='820'><figcaption>Panel usage by run (stacked orders)</figcaption></figure>
+
+  <h2>Per-Experiment Details</h2>
+  <section style='border:1px solid #ddd; border-radius:12px; padding:16px; margin:12px 0;'>
+<h3 style='margin-top:0;'>reports\single_acc_thr30</h3>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>metric</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>name</td>
+      <td>reports\single_acc_thr30</td>
+    </tr>
+    <tr>
+      <td>acc</td>
+      <td>0.825</td>
+    </tr>
+    <tr>
+      <td>precision</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>recall</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>specificity</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <td>f1</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>f2</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>AUC</td>
+      <td>0.515368</td>
+    </tr>
+    <tr>
+      <td>AUPRC</td>
+      <td>0.217032</td>
+    </tr>
+    <tr>
+      <td>avg_cost</td>
+      <td>148.557925</td>
+    </tr>
+    <tr>
+      <td>avg_steps</td>
+      <td>4.015</td>
+    </tr>
+    <tr>
+      <td>n_episodes</td>
+      <td>400</td>
+    </tr>
+    <tr>
+      <td>threshold_used</td>
+      <td>0.3</td>
+    </tr>
+    <tr>
+      <td>threshold_source</td>
+      <td>threshold_f2</td>
+    </tr>
+    <tr>
+      <td>tn</td>
+      <td>330</td>
+    </tr>
+    <tr>
+      <td>fp</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>fn</td>
+      <td>70</td>
+    </tr>
+    <tr>
+      <td>tp</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<details><summary><b>Panel index → name</b></summary>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>index</th>
+      <th>name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>hematocrit</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>hemoglobin</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>platelet</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>rbc</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>wbc</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>aniongap</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>bicarbonate</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>bun</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>calcium</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>chloride</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>creatinine</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>glucose</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>magnesium</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>phosphate</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>potassium</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>sodium</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>abg</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>coag</td>
+    </tr>
+  </tbody>
+</table>
+</details>
+<div style='display:flex; flex-wrap:wrap; gap:16px; align-items:flex-start;'>
+<figure><img src='figs\reports__single_acc_thr30\confusion_matrix.png' width='420'><figcaption>Confusion Matrix</figcaption></figure>
+<figure><img src='figs\reports__single_acc_thr30\roc.png' width='420'><figcaption>ROC</figcaption></figure>
+<figure><img src='figs\reports__single_acc_thr30\pr.png' width='420'><figcaption>Precision–Recall</figcaption></figure>
+<figure><img src='figs\reports__single_acc_thr30\panel_usage.png' width='420'><figcaption>Panel Usage (as rendered during eval)</figcaption></figure>
+</div>
+<details style='margin-top:10px;'><summary><b>Case study preview</b></summary>
+<pre style='white-space:pre-wrap; background:#fafafa; padding:12px; border:1px solid #eee; border-radius:8px;'>--------------------------------------------------
+Episode 0
+True outcome: Discharged (0)
+Step 1: Ordered aPTT (#3) (≈$49.00)
+Step 2: Ordered CBC (#0) (≈$30.86)
+Step 3: Ordered CMP (#1) (≈$67.73)
+Step 4: Diagnose action (4)
+Final p(expired)≈0.202  → Pred=0  @ thr=0.300
+… (see full file in reports\single_acc_thr30\case_studies.txt)</pre>
+</details>
+<details><summary><b>Parsed panel usage (orders)</b></summary>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>panel</th>
+      <th>orders</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>hematocrit</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>hemoglobin</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>rbc</td>
+      <td>12</td>
+    </tr>
+  </tbody>
+</table>
+<div style='color:#777;font-size:12px;'>* Parsed from case preview (subset), for full accuracy consider emitting panel_counts.json during eval.</div>
+</details>
+</section>
+
+  <hr/>
+  <p style="color:#666">Notes:
+    Panel names come from <code>configs/*</code> (<code>panel_names</code>) when available; otherwise we infer from the case study text.
+    For precise aggregate panel usage, consider having your eval write <code>panel_counts.json</code> (orders per index).
+  </p>
+</body>
+</html>

@@ -1,0 +1,5 @@
+{
+  "intra_train_exact_dups": 0,
+  "train_vs_val_exact_overlap": 0,
+  "train_vs_test_exact_overlap": 0
+}

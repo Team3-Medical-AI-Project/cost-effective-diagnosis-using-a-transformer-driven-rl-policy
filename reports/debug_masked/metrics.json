@@ -1,0 +1,19 @@
+{
+  "acc": 0.2,
+  "precision": 0.2,
+  "recall": 1.0,
+  "specificity": 0.0,
+  "f1": 0.33333333333333337,
+  "f2": 0.5555555555555556,
+  "tn": 0,
+  "fp": 16,
+  "fn": 0,
+  "tp": 4,
+  "avg_cost": 442.6125,
+  "avg_steps": 5.05,
+  "n_episodes": 20,
+  "threshold_used": 0.20269062060336468,
+  "threshold_source": "threshold_f2",
+  "AUC": 0.5,
+  "AUPRC": 0.2
+}

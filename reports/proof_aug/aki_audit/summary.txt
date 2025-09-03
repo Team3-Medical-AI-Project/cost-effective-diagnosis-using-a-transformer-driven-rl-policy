@@ -1,0 +1,66 @@
+# AKI Augmentation & Leakage Audit
+
+## Shapes
+
+- train_X: (74089, 104), val_X: (14153, 104), test_X: (14281, 104)
+
+## Class balance
+
+- train: n=74089 pos=25931 neg=48158 pos_rate=0.350
+
+- val: n=14153 pos=3839 neg=10314 pos_rate=0.271
+
+- test: n=14281 pos=3868 neg=10413 pos_rate=0.271
+
+
+## NaN rates
+
+- train_X NaN rate: 0.000000
+- val_X NaN rate: 0.000000
+- test_X NaN rate: 0.000000
+
+
+## Duplicate / Overlap checks (exact row matches)
+
+{
+  "intra_train_exact_dups": 0,
+  "train_vs_val_exact_overlap": 0,
+  "train_vs_test_exact_overlap": 0
+}
+
+
+## KS shifts (train vs val)
+
+- Significant features @ FDR<1%: 68 / 104
+
+        feature  ks_stat     p_adj_bh  mean_train  mean_val
+ creatinine_max 0.037215 5.148565e-13    0.062673  0.012089
+        ptt_max 0.037209 5.148565e-13    0.018272 -0.030119
+creatinine_mean 0.033546 1.635132e-10    0.061436  0.008177
+ creatinine_min 0.032427 5.720752e-10    0.058848  0.003811
+       ptt_mean 0.032422 5.720752e-10    0.018068 -0.024246
+        ptt_min 0.030850 5.077559e-09    0.015120 -0.010288
+        bun_max 0.029734 2.176005e-08    0.050013  0.003869
+        bun_min 0.029586 2.344918e-08    0.045733 -0.002785
+         pt_max 0.028082 1.641416e-07    0.019831 -0.002361
+        pt_mean 0.027951 1.758814e-07    0.019348 -0.000771
+
+
+## Domain classifier (train_aug vs val)
+
+- AUC: 0.5161  (≈0.5–0.6 is expected; >0.7 indicates notable shift)
+
+
+## TSTR/TRTS
+
+- TSTR_val_AUROC: 0.8349
+
+- TSTR_val_AUPRC: 0.6629
+
+- TSTR_test_AUROC: 0.8351
+
+- TSTR_test_AUPRC: 0.6627
+
+- TRTS_train_AUROC: 0.8220
+
+- TRTS_train_AUPRC: 0.7111

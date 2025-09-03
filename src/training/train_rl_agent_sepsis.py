@@ -51,13 +51,15 @@ class SepsisEnv(gym.Env):
     def __init__(self, config):
         super(SepsisEnv, self).__init__()
         self.config = config
-        self.device = torch.device(config.device)
+        # Force CPU device for evaluation/training in this script
+        self.device = torch.device("cpu")
         self.X_val = pd.read_csv(os.path.join(config.processed_data_dir, "val_X.csv"))
         self.y_val = pd.read_csv(os.path.join(config.processed_data_dir, "val_y.csv"))
         self.num_patients = len(self.X_val)
         
-        gen_weights = torch.load(config.gain_generator_path, map_location=self.device, weights_only=True)
-        clf_weights = torch.load(config.prelim_classifier_path, map_location=self.device, weights_only=True)
+        # Force CPU-safe deserialization for weights (works on any device at inference)
+        gen_weights = torch.load(config.gain_generator_path, map_location=torch.device("cpu"), weights_only=True)
+        clf_weights = torch.load(config.prelim_classifier_path, map_location=torch.device("cpu"), weights_only=True)
 
         self.gain_generator = Generator(input_dim=self.config.num_features).to(self.device).eval()
         self.gain_generator.load_state_dict(gen_weights)

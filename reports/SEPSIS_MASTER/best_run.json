@@ -1,0 +1,31 @@
+{
+  "selected_primary": "f2",
+  "min_recall": 0.5,
+  "cost_penalty": 0.0,
+  "best_run_dir": "C:\\Users\\vamsi\\cost-effective-diagnosis-using-a-transformer-driven-rl-policy\\reports\\single_acc_thr30",
+  "best_run_name": "single_acc_thr30",
+  "best_metrics": {
+    "acc": 0.825,
+    "precision": 0.0,
+    "recall": 0.0,
+    "specificity": 1.0,
+    "f1": 0.0,
+    "f2": 0.0,
+    "tn": 330,
+    "fp": 0,
+    "fn": 70,
+    "tp": 0,
+    "avg_cost": 148.55792499999995,
+    "avg_steps": 4.015,
+    "n_episodes": 400,
+    "threshold_used": 0.3,
+    "threshold_source": "threshold_f2",
+    "AUC": 0.5153679653679653,
+    "AUPRC": 0.2170315934150695,
+    "_run_dir": "C:\\Users\\vamsi\\cost-effective-diagnosis-using-a-transformer-driven-rl-policy\\reports\\single_acc_thr30",
+    "_name": "single_acc_thr30"
+  },
+  "all_runs_sorted": [
+    "single_acc_thr30"
+  ]
+}

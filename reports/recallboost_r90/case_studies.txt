@@ -1,0 +1,145 @@
+--------------------------------------------------
+Episode 0
+True outcome: Discharged (0)
+Step 1: Ordered aPTT (#3) (≈$49.00)
+Step 2: Ordered CBC (#0) (≈$30.86)
+Step 3: Ordered CMP (#1) (≈$67.73)
+Step 4: Diagnose action (5)
+Final p(expired)≈0.202  → Pred=0  @ thr=0.500
+Total cost=$147.59 | steps=4
+Result: CORRECT
+
+--------------------------------------------------
+Episode 1
+True outcome: Discharged (0)
+Step 1: Ordered aPTT (#3) (≈$49.00)
+Step 2: Ordered CBC (#0) (≈$30.86)
+Step 3: Ordered CBC (#0) (≈$30.86)
+Step 4: Ordered CBC (#0) (≈$30.86)
+Step 5: Ordered CBC (#0) (≈$30.86)
+Step 6: Ordered CBC (#0) (≈$30.86)
+Final p(expired)≈0.202  → Pred=0  @ thr=0.500
+Total cost=$203.30 | steps=6
+Result: CORRECT
+
+--------------------------------------------------
+Episode 2
+True outcome: Discharged (0)
+Step 1: Ordered aPTT (#3) (≈$49.00)
+Step 2: Ordered CBC (#0) (≈$30.86)
+Step 3: Ordered aPTT (#3) (≈$49.00)
+Step 4: Ordered aPTT (#3) (≈$49.00)
+Step 5: Ordered aPTT (#3) (≈$49.00)
+Step 6: Ordered aPTT (#3) (≈$49.00)
+Final p(expired)≈0.202  → Pred=0  @ thr=0.500
+Total cost=$275.86 | steps=6
+Result: CORRECT
+
+--------------------------------------------------
+Episode 3
+True outcome: Discharged (0)
+Step 1: Ordered aPTT (#3) (≈$49.00)
+Step 2: Ordered CBC (#0) (≈$30.86)
+Step 3: Ordered CMP (#1) (≈$67.73)
+Step 4: Diagnose action (5)
+Final p(expired)≈0.202  → Pred=0  @ thr=0.500
+Total cost=$147.59 | steps=4
+Result: CORRECT
+
+--------------------------------------------------
+Episode 4
+True outcome: Discharged (0)
+Step 1: Ordered aPTT (#3) (≈$49.00)
+Step 2: Ordered CBC (#0) (≈$30.86)
+Step 3: Ordered CMP (#1) (≈$67.73)
+Step 4: Ordered CBC (#0) (≈$30.86)
+Step 5: Ordered CBC (#0) (≈$30.86)
+Step 6: Ordered CBC (#0) (≈$30.86)
+Final p(expired)≈0.202  → Pred=0  @ thr=0.500
+Total cost=$240.17 | steps=6
+Result: CORRECT
+
+--------------------------------------------------
+Episode 5
+True outcome: Discharged (0)
+Step 1: Ordered aPTT (#3) (≈$49.00)
+Step 2: Ordered aPTT (#3) (≈$49.00)
+Step 3: Ordered aPTT (#3) (≈$49.00)
+Step 4: Ordered aPTT (#3) (≈$49.00)
+Step 5: Ordered aPTT (#3) (≈$49.00)
+Step 6: Ordered aPTT (#3) (≈$49.00)
+Final p(expired)≈0.202  → Pred=0  @ thr=0.500
+Total cost=$294.00 | steps=6
+Result: CORRECT
+
+--------------------------------------------------
+Episode 6
+True outcome: Discharged (0)
+Step 1: Ordered aPTT (#3) (≈$49.00)
+Step 2: Ordered CBC (#0) (≈$30.86)
+Step 3: Ordered CMP (#1) (≈$67.73)
+Step 4: Diagnose action (5)
+Final p(expired)≈0.202  → Pred=0  @ thr=0.500
+Total cost=$147.59 | steps=4
+Result: CORRECT
+
+--------------------------------------------------
+Episode 7
+True outcome: Expired (1)
+Step 1: Ordered aPTT (#3) (≈$49.00)
+Step 2: Ordered CBC (#0) (≈$30.86)
+Step 3: Ordered aPTT (#3) (≈$49.00)
+Step 4: Ordered aPTT (#3) (≈$49.00)
+Step 5: Ordered aPTT (#3) (≈$49.00)
+Step 6: Ordered aPTT (#3) (≈$49.00)
+Final p(expired)≈0.202  → Pred=0  @ thr=0.500
+Total cost=$275.86 | steps=6
+Result: INCORRECT
+
+--------------------------------------------------
+Episode 8
+True outcome: Expired (1)
+Step 1: Ordered aPTT (#3) (≈$49.00)
+Step 2: Ordered CBC (#0) (≈$30.86)
+Step 3: Ordered aPTT (#3) (≈$49.00)
+Step 4: Ordered aPTT (#3) (≈$49.00)
+Step 5: Ordered aPTT (#3) (≈$49.00)
+Step 6: Ordered aPTT (#3) (≈$49.00)
+Final p(expired)≈0.202  → Pred=0  @ thr=0.500
+Total cost=$275.86 | steps=6
+Result: INCORRECT
+
+--------------------------------------------------
+Episode 9
+True outcome: Discharged (0)
+Step 1: Ordered aPTT (#3) (≈$49.00)
+Step 2: Ordered CBC (#0) (≈$30.86)
+Step 3: Ordered CMP (#1) (≈$67.73)
+Step 4: Diagnose action (5)
+Final p(expired)≈0.202  → Pred=0  @ thr=0.500
+Total cost=$147.59 | steps=4
+Result: CORRECT
+
+--------------------------------------------------
+Episode 10
+True outcome: Discharged (0)
+Step 1: Ordered aPTT (#3) (≈$49.00)
+Step 2: Ordered CBC (#0) (≈$30.86)
+Step 3: Ordered CMP (#1) (≈$67.73)
+Step 4: Diagnose action (5)
+Final p(expired)≈0.202  → Pred=0  @ thr=0.500
+Total cost=$147.59 | steps=4
+Result: CORRECT
+
+--------------------------------------------------
+Episode 11
+True outcome: Discharged (0)
+Step 1: Ordered aPTT (#3) (≈$49.00)
+Step 2: Ordered aPTT (#3) (≈$49.00)
+Step 3: Ordered aPTT (#3) (≈$49.00)
+Step 4: Ordered aPTT (#3) (≈$49.00)
+Step 5: Ordered aPTT (#3) (≈$49.00)
+Step 6: Ordered aPTT (#3) (≈$49.00)
+Final p(expired)≈0.202  → Pred=0  @ thr=0.500
+Total cost=$294.00 | steps=6
+Result: CORRECT

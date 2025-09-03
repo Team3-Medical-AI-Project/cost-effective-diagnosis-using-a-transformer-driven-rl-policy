@@ -1,60 +1,51 @@
-"""
-GAIN: Generative Adversarial Imputation Networks - Model Architecture
-
-Description:
-This file defines the architecture for the Generator and Discriminator networks
-that form the GAIN model. This is the "blueprint" file that will be imported
-by the training scripts.
-"""
-
 import torch
 import torch.nn as nn
 
 class Generator(nn.Module):
     """
-    The Generator network.
-    Takes a data vector + mask vector as input and outputs an imputed data vector.
+    G(x, m) -> imputed data in [0,1] (assumes features scaled to [0,1])
     """
-    def __init__(self, input_dim):
-        super(Generator, self).__init__()
-        self.model = nn.Sequential(
-            nn.Linear(input_dim * 2, 256),
-            nn.ReLU(),
-            nn.Linear(256, 256),
-            nn.ReLU(),
-            nn.Linear(256, input_dim) # No final activation, as data is standardized
+    def __init__(self, input_dim: int, hidden: int = 256):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Linear(input_dim * 2, hidden),
+            nn.ReLU(inplace=True),
+            nn.Linear(hidden, hidden),
+            nn.ReLU(inplace=True),
+            nn.Linear(hidden, input_dim),
+            nn.Sigmoid()  # keep generator output in [0,1]
         )
 
     def forward(self, x, m):
-        """
-        x: data vector with missing values (NaNs replaced by 0)
-        m: mask vector (0 for missing, 1 for present)
-        """
-        input_cat = torch.cat([x, m], dim=1)
-        imputed_data = self.model(input_cat)
-        return imputed_data
+        return self.net(torch.cat([x, m], dim=1))
+
 
 class Discriminator(nn.Module):
     """
-    The Discriminator network.
-    Takes an imputed data vector + hint vector and outputs a probability mask.
+    D(x_hat, h):
+      - default (use_logits=False): returns probabilities in [0,1] (old behavior; BCELoss)
+      - use_logits=True: returns logits (new stable path; BCEWithLogitsLoss)
     """
-    def __init__(self, input_dim):
-        super(Discriminator, self).__init__()
-        self.model = nn.Sequential(
-            nn.Linear(input_dim * 2, 256),
-            nn.ReLU(),
-            nn.Linear(256, 256),
-            nn.ReLU(),
-            nn.Linear(256, input_dim),
-            nn.Sigmoid() # Sigmoid to output probabilities
+    def __init__(self, input_dim: int, hidden: int = 256, use_logits: bool = False):
+        super().__init__()
+        self.use_logits = use_logits
+        self.backbone = nn.Sequential(
+            nn.Linear(input_dim * 2, hidden),
+            nn.ReLU(inplace=True),
+            nn.Linear(hidden, hidden),
+            nn.ReLU(inplace=True),
+            nn.Linear(hidden, input_dim)  # logits
         )
 
     def forward(self, x, h):
-        """
-        x: the imputed data vector from the Generator
-        h: the hint vector
-        """
-        input_cat = torch.cat([x, h], dim=1)
-        probability_mask = self.model(input_cat)
-        return probability_mask
+        logits = self.backbone(torch.cat([x, h], dim=1))
+        if self.use_logits:
+            return logits
+        else:
+            return torch.sigmoid(logits)
+
+
+
+class DiscriminatorLogits(Discriminator):
+    def __init__(self, input_dim: int, hidden: int = 256):
+        super().__init__(input_dim=input_dim, hidden=hidden, use_logits=True)

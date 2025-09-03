@@ -1,0 +1,155 @@
+--------------------------------------------------
+Episode 0
+True outcome: Discharged (0)
+  Step 1: Diagnose action (5)
+  Step 2: Diagnose action (5)
+  Step 3: Diagnose action (5)
+  Step 4: Diagnose action (5)
+  Step 5: Diagnose action (5)
+  Step 6: Diagnose action (5)
+Final p(expired)≈0.500  → Pred=1  @ thr=0.203
+Total cost=$0.00 | steps=6
+Result: INCORRECT
+
+--------------------------------------------------
+Episode 1
+True outcome: Discharged (0)
+  Step 1: Diagnose action (5)
+  Step 2: Diagnose action (5)
+  Step 3: Diagnose action (5)
+  Step 4: Diagnose action (5)
+  Step 5: Diagnose action (5)
+  Step 6: Diagnose action (5)
+Final p(expired)≈0.500  → Pred=1  @ thr=0.203
+Total cost=$0.00 | steps=6
+Result: INCORRECT
+
+--------------------------------------------------
+Episode 2
+True outcome: Discharged (0)
+  Step 1: Diagnose action (5)
+  Step 2: Diagnose action (5)
+  Step 3: Diagnose action (5)
+  Step 4: Diagnose action (5)
+  Step 5: Diagnose action (5)
+  Step 6: Diagnose action (5)
+Final p(expired)≈0.500  → Pred=1  @ thr=0.203
+Total cost=$0.00 | steps=6
+Result: INCORRECT
+
+--------------------------------------------------
+Episode 3
+True outcome: Discharged (0)
+  Step 1: Diagnose action (5)
+  Step 2: Diagnose action (5)
+  Step 3: Diagnose action (5)
+  Step 4: Diagnose action (5)
+  Step 5: Diagnose action (5)
+  Step 6: Diagnose action (5)
+Final p(expired)≈0.500  → Pred=1  @ thr=0.203
+Total cost=$0.00 | steps=6
+Result: INCORRECT
+
+--------------------------------------------------
+Episode 4
+True outcome: Discharged (0)
+  Step 1: Diagnose action (5)
+  Step 2: Diagnose action (5)
+  Step 3: Diagnose action (5)
+  Step 4: Diagnose action (5)
+  Step 5: Diagnose action (5)
+  Step 6: Diagnose action (5)
+Final p(expired)≈0.500  → Pred=1  @ thr=0.203
+Total cost=$0.00 | steps=6
+Result: INCORRECT
+
+--------------------------------------------------
+Episode 5
+True outcome: Discharged (0)
+  Step 1: Diagnose action (5)
+  Step 2: Diagnose action (5)
+  Step 3: Diagnose action (5)
+  Step 4: Diagnose action (5)
+  Step 5: Diagnose action (5)
+  Step 6: Diagnose action (5)
+Final p(expired)≈0.500  → Pred=1  @ thr=0.203
+Total cost=$0.00 | steps=6
+Result: INCORRECT
+
+--------------------------------------------------
+Episode 6
+True outcome: Discharged (0)
+  Step 1: Diagnose action (5)
+  Step 2: Diagnose action (5)
+  Step 3: Diagnose action (5)
+  Step 4: Diagnose action (5)
+  Step 5: Diagnose action (5)
+  Step 6: Diagnose action (5)
+Final p(expired)≈0.500  → Pred=1  @ thr=0.203
+Total cost=$0.00 | steps=6
+Result: INCORRECT
+
+--------------------------------------------------
+Episode 7
+True outcome: Expired (1)
+  Step 1: Diagnose action (5)
+  Step 2: Diagnose action (5)
+  Step 3: Diagnose action (5)
+  Step 4: Diagnose action (5)
+  Step 5: Diagnose action (5)
+  Step 6: Diagnose action (5)
+Final p(expired)≈0.500  → Pred=1  @ thr=0.203
+Total cost=$0.00 | steps=6
+Result: CORRECT
+
+--------------------------------------------------
+Episode 8
+True outcome: Expired (1)
+  Step 1: Diagnose action (5)
+  Step 2: Diagnose action (5)
+  Step 3: Diagnose action (5)
+  Step 4: Diagnose action (5)
+  Step 5: Diagnose action (5)
+  Step 6: Diagnose action (5)
+Final p(expired)≈0.500  → Pred=1  @ thr=0.203
+Total cost=$0.00 | steps=6
+Result: CORRECT
+
+--------------------------------------------------
+Episode 9
+True outcome: Discharged (0)
+  Step 1: Diagnose action (5)
+  Step 2: Diagnose action (5)
+  Step 3: Diagnose action (5)
+  Step 4: Diagnose action (5)
+  Step 5: Diagnose action (5)
+  Step 6: Diagnose action (5)
+Final p(expired)≈0.500  → Pred=1  @ thr=0.203
+Total cost=$0.00 | steps=6
+Result: INCORRECT
+
+--------------------------------------------------
+Episode 10
+True outcome: Discharged (0)
+  Step 1: Diagnose action (5)
+  Step 2: Diagnose action (5)
+  Step 3: Diagnose action (5)
+  Step 4: Diagnose action (5)
+  Step 5: Diagnose action (5)
+  Step 6: Diagnose action (5)
+Final p(expired)≈0.500  → Pred=1  @ thr=0.203
+Total cost=$0.00 | steps=6
+Result: INCORRECT
+
+--------------------------------------------------
+Episode 11
+True outcome: Discharged (0)
+  Step 1: Diagnose action (5)
+  Step 2: Diagnose action (5)
+  Step 3: Diagnose action (5)
+  Step 4: Diagnose action (5)
+  Step 5: Diagnose action (5)
+  Step 6: Diagnose action (5)
+Final p(expired)≈0.500  → Pred=1  @ thr=0.203
+Total cost=$0.00 | steps=6
+Result: INCORRECT

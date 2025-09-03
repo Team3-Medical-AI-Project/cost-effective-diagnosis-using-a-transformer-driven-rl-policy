@@ -1,0 +1,82 @@
+# =================================================
+# Acc-Focus PPO config for Sepsis RL Agent (keeps real costs)
+# =================================================
+
+# --- File Paths ---
+processed_data_dir: "data/processed/sepsis"
+model_dir: "models"
+log_dir: "logs_sepsis_final"
+gain_generator_path: "models/generator_sepsis.pth"
+prelim_classifier_path: "models/classifier_sepsis.pth"
+
+# (Optional) Calibrator + threshold JSON (if env uses them)
+calibrator_path: "models/sepsis_calibrator_final.joblib"
+threshold_json: "models/threshold_sepsis.json"
+
+# (Only used when diagnose_mode: "single"; ignored in "split")
+decision_threshold: 0.50
+
+# --- Data/Env ---
+num_features: 37
+num_test_groups: 4
+min_tests_before_diagnosis: 4
+diagnose_mode: "split"             # change to "single" if you want to use decision_threshold/threshold_json
+device: "cuda"
+seed: 108
+
+# Panel groupings (matches your current layout)
+feature_groups:
+  0: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]            # CBC
+  1: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19]  # CMP
+  2: [20, 21, 22, 23, 24, 25]                  # ABG
+  3: [26, 27, 28, 29, 30, 31, 32, 33, 34, 35]  # aPTT
+visible_feature_indices: [36]
+
+panel_names:
+  "0": "CBC"
+  "1": "CMP"
+  "2": "ABG"
+  "3": "aPTT"
+
+# --- Real costs ---
+cost_mapping:
+  "0": 30.86
+  "1": 67.73
+  "2": 509.0
+  "3": 49.0
+
+first_k_cost_discount: {k: 0, factor: 1.0}  # keep economics real
+
+# Balance information gain vs cost (tune 0.20–0.30). Start here:
+info_cost_tradeoff: 0.25
+
+# --- Shaping weights (information/evidence) ---
+uncertainty_factor: 1.25
+progress_toward_true_factor: 0.75
+
+# --- Asymmetric terminal rewards (protect recall, curb false positives) ---
+reward_true_positive: 8000.0
+reward_true_negative: 2000.0
+penalty_false_positive: -6500.0
+penalty_false_negative: -16000.0
+
+reward_scale: 0.001
+
+# --- Policy / extractor ---
+features_dim: 128
+
+# --- PPO (MaskablePPO) ---
+n_envs: 16
+n_steps: 2048
+batch_size: 256
+learning_rate: 3e-4
+clip_range: 0.2
+gamma: 0.995
+gae_lambda: 0.97
+ent_coef: 0.01
+vf_coef: 0.5
+max_grad_norm: 0.5
+target_kl: 0.03
+
+# --- Training budget ---
+total_timesteps: 1000000

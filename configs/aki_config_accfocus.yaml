@@ -1,0 +1,146 @@
+# =================================================
+# AKI RL Config — Atomic per-test actions
+# with ABG merged, Coag (INR+aPTT) merged
+# =================================================
+
+# --- File Paths ---
+processed_data_dir: "data/processed/aki"
+model_dir: "models"
+log_dir: "logs_aki_final"
+
+# AKI models
+gain_generator_path: "models/generator_aki.pth"
+gain_scaler_path:   "models/gain_scaler_aki.joblib"
+prelim_classifier_path: "models/classifier_aki.pth"
+
+# Optional: probability calibration + threshold (if you use them elsewhere)
+calibrator_path: "models/aki_calibrator.joblib"
+threshold_json: "models/threshold_aki.json"
+
+# Scaler used by classifier pipeline
+scaler_path: "data/processed/aki/scaler_aki.joblib"
+
+# --- Data/Env ---
+num_features: 104
+num_test_groups: 18
+min_tests_before_diagnosis: 2
+diagnose_mode: "single"          # <-- set SINGLE to match evaluation + 1 diag action
+decision_threshold: 0.55          # used when diagnose_mode == "single"
+device: "cpu"
+seed: 108
+
+# Require these panels before diagnosis (helps specificity)
+required_before_diag: [7, 10, 15]   # bun, creatinine, sodium
+
+# Optional: features visible at t=0 for free
+visible_feature_indices: []
+
+# ----------------- ACTION -> FEATURE INDICES -----------------
+feature_groups:
+  0:  [47, 48, 49]       # hematocrit
+  1:  [50, 51, 52]       # hemoglobin
+  2:  [71, 72, 73]       # platelet
+  3:  [83, 84, 85]       # rbc
+  4:  [101, 102, 103]    # wbc
+  5:  [8, 9, 10]         # aniongap
+  6:  [17, 18, 19]       # bicarbonate
+  7:  [23, 24, 25]       # bun
+  8:  [26, 27, 28]       # calcium
+  9:  [29, 30, 31]       # chloride
+  10: [32, 33, 34]       # creatinine
+  11: [41, 42, 43]       # glucose
+  12: [59, 60, 61]       # magnesium
+  13: [68, 69, 70]       # phosphate
+  14: [74, 75, 76]       # potassium
+  15: [92, 93, 94]       # sodium
+  16: [14, 15, 16, 62, 63, 64, 65, 66, 67]  # ABG (base_excess + o2_saturation + ph)
+  17: [53, 54, 55, 80, 81, 82]              # Coag (INR + aPTT)
+
+panel_names:
+  "0":  "hematocrit"
+  "1":  "hemoglobin"
+  "2":  "platelet"
+  "3":  "rbc"
+  "4":  "wbc"
+  "5":  "aniongap"
+  "6":  "bicarbonate"
+  "7":  "bun"
+  "8":  "calcium"
+  "9":  "chloride"
+  "10": "creatinine"
+  "11": "glucose"
+  "12": "magnesium"
+  "13": "phosphate"
+  "14": "potassium"
+  "15": "sodium"
+  "16": "abg"
+  "17": "coag"
+
+# --- Costs ---
+cost_mapping:
+  "0":  9
+  "1":  9
+  "2":  18
+  "3":  18
+  "4":  18
+  "5":  21.21
+  "6":  134
+  "7":  18
+  "8":  4
+  "9":  4
+  "10": 4
+  "11": 4
+  "12": 31
+  "13": 34
+  "14": 34
+  "15": 34
+  "16": 509      # ABG bundle
+  "17": 109      # Coag bundle
+
+first_k_cost_discount: {k: 0, factor: 1.0}
+block_repeats: true
+repeat_penalty: -200
+
+# --- Reward shaping / economics ---
+reward_scale: 0.01
+info_cost_tradeoff: 0.35
+info_gain_reward: 5.0
+step_penalty: -1.0
+
+# --- Terminal rewards ---
+reward_true_positive: 8000.0
+reward_true_negative: 2000.0
+penalty_false_positive: -6500.0
+penalty_false_negative: -16000.0
+
+# --- Policy / extractor ---
+features_dim: 128
+
+# --- PPO (MaskablePPO) ---
+n_envs: 8
+n_steps: 2048
+batch_size: 256
+n_epochs: 10
+learning_rate: 0.00025
+clip_range: 0.2
+gamma: 0.99
+gae_lambda: 0.95
+ent_coef: 0.01
+vf_coef: 0.5
+max_grad_norm: 0.5
+target_kl: 0.03
+
+# --- Training budget & checkpointing ---
+total_timesteps: 300000
+save_freq: 200000
+eval_freq: 50000
+
+compile_torch: false
+entropy_every_k: 1
+
+# --- Normalization (VecNormalize) ---
+normalize_obs: false          # <-- OFF so eval matches training (your evaluator doesn't load stats)
+normalize_reward: false       # <-- OFF
+clip_obs: 10.0
+clip_reward: 10.0
+norm_gamma: 0.99
