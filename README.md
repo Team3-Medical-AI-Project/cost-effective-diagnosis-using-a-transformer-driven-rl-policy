@@ -27,6 +27,9 @@ This repository is designed for researchers and engineers who want a clear, repr
 - Maskable PPO with action masks to prevent re-ordering the same panel and to enforce the “minimum tests before diagnose” constraint.
 - Reproducible configs, metrics (AUROC, F1/BACC, cost per patient), and plots (ROC/PR, calibration, panel-usage).
 
+
+![Architectural Flowchart](Images/Flow_chart_em.png)
+
 --------------------------------------------------------------------------------
 
 ## 3. Repository Layout
