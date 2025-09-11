@@ -1,0 +1,14 @@
+processed_data_dir: "data/processed/sepsis"   # <- will read val_X.csv / val_y.csv (already imputed+scaled)
+prelim_classifier_path: "models/classifier_sepsis.pth"
+# GAIN is not used for thresholds, but the script may accept it harmlessly:
+gain_generator_path: "models/generator_sepsis.pth"
+
+# Important: DO NOT rescale again; leave scaler_path empty/nonexistent so the script skips it.
+scaler_path: ""
+
+# Optional: if you want calibrated operating points in the report:
+calibrator_path: "models/sepsis_calibrator_final.joblib"
+
+# Irrelevant for this script but harmless:
+diagnose_mode: "single"
+decision_threshold: 0.5

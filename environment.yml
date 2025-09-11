@@ -1,0 +1,24 @@
+name: rl_med_diag_final
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9
+  - pip
+  - pytorch
+  - torchvision
+  - torchaudio
+  - cudatoolkit=11.7
+  - pip:
+    - pandas
+    - numpy
+    - gymnasium
+    - stable-baselines3[extra]
+    - sb3-contrib
+    - scikit-learn
+    - joblib
+    - matplotlib
+    - seaborn
+    - sdv
+    - xgboost

@@ -1,0 +1,119 @@
+--------------------------------------------------
+Episode 0
+True outcome: Discharged (0)
+Step 1: Ordered CBC (#0) (p_before=0.517 → p_after=0.482) (≈$30.86)
+Step 2: Ordered CMP (#1) (p_before=0.482 → p_after=0.458) (≈$67.73)
+  Step 3: Diagnose action (4) → Expired (p=0.458)
+Final p(expired)≈0.458  → Pred=0  @ thr=0.530
+Total cost=$98.59 | steps=3
+Result: CORRECT
+
+--------------------------------------------------
+Episode 1
+True outcome: Discharged (0)
+Step 1: Ordered CBC (#0) (p_before=0.517 → p_after=0.477) (≈$30.86)
+Step 2: Ordered CMP (#1) (p_before=0.477 → p_after=0.442) (≈$67.73)
+  Step 3: Diagnose action (4) → Expired (p=0.442)
+Final p(expired)≈0.442  → Pred=0  @ thr=0.530
+Total cost=$98.59 | steps=3
+Result: CORRECT
+
+--------------------------------------------------
+Episode 2
+True outcome: Discharged (0)
+Step 1: Ordered CBC (#0) (p_before=0.517 → p_after=0.512) (≈$30.86)
+Step 2: Ordered CMP (#1) (p_before=0.512 → p_after=0.495) (≈$67.73)
+  Step 3: Diagnose action (4) → Expired (p=0.495)
+Final p(expired)≈0.495  → Pred=0  @ thr=0.530
+Total cost=$98.59 | steps=3
+Result: CORRECT
+
+--------------------------------------------------
+Episode 3
+True outcome: Expired (1)
+Step 1: Ordered CBC (#0) (p_before=0.517 → p_after=0.503) (≈$30.86)
+Step 2: Ordered CMP (#1) (p_before=0.503 → p_after=0.478) (≈$67.73)
+  Step 3: Diagnose action (4) → Expired (p=0.478)
+Final p(expired)≈0.478  → Pred=0  @ thr=0.530
+Total cost=$98.59 | steps=3
+Result: INCORRECT
+
+--------------------------------------------------
+Episode 4
+True outcome: Discharged (0)
+Step 1: Ordered CBC (#0) (p_before=0.517 → p_after=0.486) (≈$30.86)
+Step 2: Ordered CMP (#1) (p_before=0.486 → p_after=0.457) (≈$67.73)
+  Step 3: Diagnose action (4) → Expired (p=0.457)
+Final p(expired)≈0.457  → Pred=0  @ thr=0.530
+Total cost=$98.59 | steps=3
+Result: CORRECT
+
+--------------------------------------------------
+Episode 5
+True outcome: Discharged (0)
+Step 1: Ordered CBC (#0) (p_before=0.517 → p_after=0.484) (≈$30.86)
+Step 2: Ordered CMP (#1) (p_before=0.484 → p_after=0.463) (≈$67.73)
+  Step 3: Diagnose action (4) → Expired (p=0.463)
+Final p(expired)≈0.463  → Pred=0  @ thr=0.530
+Total cost=$98.59 | steps=3
+Result: CORRECT
+
+--------------------------------------------------
+Episode 6
+True outcome: Discharged (0)
+Step 1: Ordered CBC (#0) (p_before=0.517 → p_after=0.487) (≈$30.86)
+Step 2: Ordered CMP (#1) (p_before=0.487 → p_after=0.448) (≈$67.73)
+  Step 3: Diagnose action (4) → Expired (p=0.448)
+Final p(expired)≈0.448  → Pred=0  @ thr=0.530
+Total cost=$98.59 | steps=3
+Result: CORRECT
+
+--------------------------------------------------
+Episode 7
+True outcome: Expired (1)
+Step 1: Ordered CBC (#0) (p_before=0.517 → p_after=0.486) (≈$30.86)
+Step 2: Ordered CMP (#1) (p_before=0.486 → p_after=0.442) (≈$67.73)
+  Step 3: Diagnose action (4) → Expired (p=0.442)
+Final p(expired)≈0.442  → Pred=0  @ thr=0.530
+Total cost=$98.59 | steps=3
+Result: INCORRECT
+
+--------------------------------------------------
+Episode 8
+True outcome: Discharged (0)
+Step 1: Ordered CBC (#0) (p_before=0.517 → p_after=0.484) (≈$30.86)
+Step 2: Ordered CMP (#1) (p_before=0.484 → p_after=0.449) (≈$67.73)
+  Step 3: Diagnose action (4) → Expired (p=0.449)
+Final p(expired)≈0.449  → Pred=0  @ thr=0.530
+Total cost=$98.59 | steps=3
+Result: CORRECT
+
+--------------------------------------------------
+Episode 9
+True outcome: Discharged (0)
+Step 1: Ordered CBC (#0) (p_before=0.517 → p_after=0.490) (≈$30.86)
+Step 2: Ordered CMP (#1) (p_before=0.490 → p_after=0.467) (≈$67.73)
+  Step 3: Diagnose action (4) → Expired (p=0.467)
+Final p(expired)≈0.467  → Pred=0  @ thr=0.530
+Total cost=$98.59 | steps=3
+Result: CORRECT
+
+--------------------------------------------------
+Episode 10
+True outcome: Discharged (0)
+Step 1: Ordered CBC (#0) (p_before=0.517 → p_after=0.509) (≈$30.86)
+Step 2: Ordered CMP (#1) (p_before=0.509 → p_after=0.478) (≈$67.73)
+  Step 3: Diagnose action (4) → Expired (p=0.478)
+Final p(expired)≈0.478  → Pred=0  @ thr=0.530
+Total cost=$98.59 | steps=3
+Result: CORRECT
+
+--------------------------------------------------
+Episode 11
+True outcome: Discharged (0)
+Step 1: Ordered CBC (#0) (p_before=0.517 → p_after=0.554) (≈$30.86)
+Step 2: Ordered CMP (#1) (p_before=0.554 → p_after=0.584) (≈$67.73)
+  Step 3: Diagnose action (4) → Expired (p=0.584)
+Final p(expired)≈0.584  → Pred=1  @ thr=0.530
+Total cost=$98.59 | steps=3
+Result: INCORRECT

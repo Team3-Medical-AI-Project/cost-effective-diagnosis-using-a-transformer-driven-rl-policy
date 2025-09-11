@@ -1,0 +1,140 @@
+--------------------------------------------------
+Episode 0
+True outcome: Discharged (0)
+Step 1: Ordered aPTT (#3) (p_before=1.000 → p_after=1.000) (≈$49.00)
+Step 2: Ordered aPTT (#3) (p_before=1.000 → p_after=1.000) (≈$49.00)
+Step 3: Ordered aPTT (#3) (p_before=1.000 → p_after=1.000) (≈$49.00)
+Step 4: Ordered aPTT (#3) (p_before=1.000 → p_after=1.000) (≈$49.00)
+Step 5: Ordered aPTT (#3) (p_before=1.000 → p_after=1.000) (≈$49.00)
+Step 6: Ordered aPTT (#3) (p_before=1.000 → p_after=1.000) (≈$49.00)
+Final p(expired)≈1.000  → Pred=1  @ thr=0.203
+Total cost=$294.00 | steps=6
+Result: INCORRECT
+
+--------------------------------------------------
+Episode 1
+True outcome: Discharged (0)
+Step 1: Ordered aPTT (#3) (p_before=1.000 → p_after=1.000) (≈$49.00)
+  Step 2: Diagnose action (4) → Expired (p=1.000)
+Final p(expired)≈1.000  → Pred=1  @ thr=0.203
+Total cost=$49.00 | steps=2
+Result: INCORRECT
+
+--------------------------------------------------
+Episode 2
+True outcome: Discharged (0)
+Step 1: Ordered aPTT (#3) (p_before=1.000 → p_after=1.000) (≈$49.00)
+Step 2: Ordered CMP (#1) (p_before=1.000 → p_after=1.000) (≈$67.73)
+  Step 3: Diagnose action (4) → Expired (p=1.000)
+Final p(expired)≈1.000  → Pred=1  @ thr=0.203
+Total cost=$116.73 | steps=3
+Result: INCORRECT
+
+--------------------------------------------------
+Episode 3
+True outcome: Discharged (0)
+Step 1: Ordered aPTT (#3) (p_before=1.000 → p_after=1.000) (≈$49.00)
+  Step 2: Diagnose action (4) → Expired (p=1.000)
+Final p(expired)≈1.000  → Pred=1  @ thr=0.203
+Total cost=$49.00 | steps=2
+Result: INCORRECT
+
+--------------------------------------------------
+Episode 4
+True outcome: Discharged (0)
+Step 1: Ordered aPTT (#3) (p_before=1.000 → p_after=1.000) (≈$49.00)
+Step 2: Ordered ABG (#2) (p_before=1.000 → p_after=1.000) (≈$509.00)
+Step 3: Ordered CMP (#1) (p_before=1.000 → p_after=1.000) (≈$67.73)
+Step 4: Ordered CMP (#1) (p_before=1.000 → p_after=1.000) (≈$67.73)
+Step 5: Ordered CMP (#1) (p_before=1.000 → p_after=1.000) (≈$67.73)
+Step 6: Ordered CMP (#1) (p_before=1.000 → p_after=1.000) (≈$67.73)
+Final p(expired)≈1.000  → Pred=1  @ thr=0.203
+Total cost=$828.92 | steps=6
+Result: INCORRECT
+
+--------------------------------------------------
+Episode 5
+True outcome: Discharged (0)
+Step 1: Ordered aPTT (#3) (p_before=1.000 → p_after=1.000) (≈$49.00)
+Step 2: Ordered aPTT (#3) (p_before=1.000 → p_after=1.000) (≈$49.00)
+Step 3: Ordered aPTT (#3) (p_before=1.000 → p_after=1.000) (≈$49.00)
+Step 4: Ordered aPTT (#3) (p_before=1.000 → p_after=1.000) (≈$49.00)
+Step 5: Ordered aPTT (#3) (p_before=1.000 → p_after=1.000) (≈$49.00)
+Step 6: Ordered aPTT (#3) (p_before=1.000 → p_after=1.000) (≈$49.00)
+Final p(expired)≈1.000  → Pred=1  @ thr=0.203
+Total cost=$294.00 | steps=6
+Result: INCORRECT
+
+--------------------------------------------------
+Episode 6
+True outcome: Discharged (0)
+Step 1: Ordered aPTT (#3) (p_before=1.000 → p_after=1.000) (≈$49.00)
+Step 2: Ordered CMP (#1) (p_before=1.000 → p_after=1.000) (≈$67.73)
+Step 3: Ordered CMP (#1) (p_before=1.000 → p_after=1.000) (≈$67.73)
+Step 4: Ordered CMP (#1) (p_before=1.000 → p_after=1.000) (≈$67.73)
+Step 5: Ordered CMP (#1) (p_before=1.000 → p_after=1.000) (≈$67.73)
+Step 6: Ordered CMP (#1) (p_before=1.000 → p_after=1.000) (≈$67.73)
+Final p(expired)≈1.000  → Pred=1  @ thr=0.203
+Total cost=$387.65 | steps=6
+Result: INCORRECT
+
+--------------------------------------------------
+Episode 7
+True outcome: Expired (1)
+Step 1: Ordered aPTT (#3) (p_before=1.000 → p_after=1.000) (≈$49.00)
+Step 2: Ordered aPTT (#3) (p_before=1.000 → p_after=1.000) (≈$49.00)
+Step 3: Ordered aPTT (#3) (p_before=1.000 → p_after=1.000) (≈$49.00)
+Step 4: Ordered aPTT (#3) (p_before=1.000 → p_after=1.000) (≈$49.00)
+Step 5: Ordered aPTT (#3) (p_before=1.000 → p_after=1.000) (≈$49.00)
+Step 6: Ordered aPTT (#3) (p_before=1.000 → p_after=1.000) (≈$49.00)
+Final p(expired)≈1.000  → Pred=1  @ thr=0.203
+Total cost=$294.00 | steps=6
+Result: CORRECT
+
+--------------------------------------------------
+Episode 8
+True outcome: Expired (1)
+Step 1: Ordered aPTT (#3) (p_before=1.000 → p_after=1.000) (≈$49.00)
+Step 2: Ordered ABG (#2) (p_before=1.000 → p_after=1.000) (≈$509.00)
+Step 3: Ordered aPTT (#3) (p_before=1.000 → p_after=1.000) (≈$49.00)
+Step 4: Ordered aPTT (#3) (p_before=1.000 → p_after=1.000) (≈$49.00)
+Step 5: Ordered aPTT (#3) (p_before=1.000 → p_after=1.000) (≈$49.00)
+Step 6: Ordered aPTT (#3) (p_before=1.000 → p_after=1.000) (≈$49.00)
+Final p(expired)≈1.000  → Pred=1  @ thr=0.203
+Total cost=$754.00 | steps=6
+Result: CORRECT
+
+--------------------------------------------------
+Episode 9
+True outcome: Discharged (0)
+Step 1: Ordered aPTT (#3) (p_before=1.000 → p_after=1.000) (≈$49.00)
+  Step 2: Diagnose action (4) → Expired (p=1.000)
+Final p(expired)≈1.000  → Pred=1  @ thr=0.203
+Total cost=$49.00 | steps=2
+Result: INCORRECT
+
+--------------------------------------------------
+Episode 10
+True outcome: Discharged (0)
+Step 1: Ordered aPTT (#3) (p_before=1.000 → p_after=1.000) (≈$49.00)
+Step 2: Ordered ABG (#2) (p_before=1.000 → p_after=1.000) (≈$509.00)
+Step 3: Ordered ABG (#2) (p_before=1.000 → p_after=1.000) (≈$509.00)
+Step 4: Ordered ABG (#2) (p_before=1.000 → p_after=1.000) (≈$509.00)
+Step 5: Ordered ABG (#2) (p_before=1.000 → p_after=1.000) (≈$509.00)
+Step 6: Ordered ABG (#2) (p_before=1.000 → p_after=1.000) (≈$509.00)
+Final p(expired)≈1.000  → Pred=1  @ thr=0.203
+Total cost=$2594.00 | steps=6
+Result: INCORRECT
+
+--------------------------------------------------
+Episode 11
+True outcome: Discharged (0)
+Step 1: Ordered aPTT (#3) (p_before=1.000 → p_after=1.000) (≈$49.00)
+Step 2: Ordered aPTT (#3) (p_before=1.000 → p_after=1.000) (≈$49.00)
+Step 3: Ordered aPTT (#3) (p_before=1.000 → p_after=1.000) (≈$49.00)
+Step 4: Ordered aPTT (#3) (p_before=1.000 → p_after=1.000) (≈$49.00)
+Step 5: Ordered aPTT (#3) (p_before=1.000 → p_after=1.000) (≈$49.00)
+Step 6: Ordered aPTT (#3) (p_before=1.000 → p_after=1.000) (≈$49.00)
+Final p(expired)≈1.000  → Pred=1  @ thr=0.203
+Total cost=$294.00 | steps=6
+Result: INCORRECT

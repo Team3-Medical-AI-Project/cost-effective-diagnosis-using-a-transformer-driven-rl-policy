@@ -1,0 +1,7 @@
+{
+  "threshold_f2": 0.5,
+  "threshold_recall90": 0.5,
+  "chosen": "threshold_f2",
+  "AUC": 0.564298082392727,
+  "AP": 0.266235980430081
+}

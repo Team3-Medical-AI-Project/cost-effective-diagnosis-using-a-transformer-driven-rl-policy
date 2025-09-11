@@ -1,0 +1,23 @@
+[
+  "hematocrit",
+  "hemoglobin",
+  "platelet",
+  "rbc",
+  "wbc",
+  "aniongap",
+  "bicarbonate",
+  "bun",
+  "calcium",
+  "chloride",
+  "creatinine",
+  "glucose",
+  "magnesium",
+  "phosphate",
+  "potassium",
+  "sodium",
+  "base_excess",
+  "o2_saturation",
+  "ph",
+  "inr",
+  "ptt"
+]

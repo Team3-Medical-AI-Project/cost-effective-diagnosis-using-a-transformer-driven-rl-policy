@@ -1,0 +1,38 @@
+# === AKI data build + augmentation config (for scripts/build_aki_splits_and_augment.py) ===
+
+seed: 42
+
+data:
+  # Input preprocessed table you just created
+  preprocessed_csv: "data/preprocessed/aki_feature_matrix.csv"
+
+  # Where to write train/val/test CSVs + scaler/imputer
+  processed_dir: "data/processed/aki"
+
+  # IDs (will be dropped from X); include stay_id if present
+  id_columns: ["subject_id", "hadm_id", "stay_id"]
+
+  # Label column name in the preprocessed CSV
+  label_column: "kdigo_aki"
+
+  # Split fractions
+  split:
+    train_frac: 0.70
+    val_frac:   0.15
+    test_frac:  0.15
+    stratify:   true
+
+augmentation:
+  # Turn on hybrid aug (CTGAN -> SMOTE). If CTGAN is missing, it will be skipped safely.
+  do_aug: true
+
+  # Target minority proportion *before* SMOTE (only matters if CTGAN is available)
+  ctgan_target_ratio_pre_smote: 0.35
+
+  # Light sanity check: Train-on-synthetic/Test-on-real
+  tstr:
+    do_tstr: true
+
+reports:
+  # Where class balance plots + TSTR csv will go
+  proof_dir: "reports/proof_aug/aki"
